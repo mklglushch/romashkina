@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сік Ромашкіна</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/main.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body background="../static/img/фон.webp">
+    <header>
+      <div class="logo">
+        <img src="../static/img/Frame 1 1.png" alt="Ромашкіна" />
+      </div>
+      <nav>
+        <a href="{% url 'main' %}"  class="active-page">Головна</a>
+        <a href="{% url 'shop' %}">Магазин</a>
+        <a href="{% url 'about' %}">Про нас</a>
+        <a href="{% url 'contact' %}">Контакти</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-image">
+          <img src="../static/img/Group 1.png" alt="Соки" />
+        </div>
+        <div class="hero-text">
+          <h1>Сік “Ромашкіна”</h1>
+          <p>
+            Сік прямого віджиму з добірної сировини, без додавання консервантів
+            і барвників.<br />Свіжий смак природи в кожному ковтку
+          </p>
+        </div>
+      </section>
+    </main>
+    <section class="cta">
+      <a href="{% url 'shop' %}" class="button">ЗАМОВИТИ</a>
+    </section>
+  </body>
+</html>

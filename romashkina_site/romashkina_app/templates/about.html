@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ромашкіна | Про нас</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/about.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body background="../static/img/фон.webp">
+    <header>
+      <div class="logo">
+        <img src="../static/img/Frame 1 1.png" alt="Ромашкіна" />
+      </div>
+      <nav>
+        <a href="{% url 'main' %}">Головна</a>
+        <a href="{% url 'shop' %}">Магазин</a>
+        <a href="{% url 'about' %}"  class="active-page">Про нас</a>
+        <a href="{% url 'contact' %}">Контакти</a>
+      </nav>
+    </header>
+
+    <main class="about">
+      <div class="about-text-up">
+        <h1>Трішки про нас</h1>
+        <h2>
+          Усе починалося з малого бюджету, але з великого бажання створити
+          власний бізнес
+        </h2>
+      </div>
+      <div class="between">
+        <p class="first">
+          Коли в 2014 році наш батько оголосив, що ми починаємо цю справу, нам
+          важко було <br />
+          в це повірити. Це здавалося ризикованим кроком, адже ми не мали
+          великого досвіду чи значного стартового капіталу. Проте була одна річ,
+          яка рухала нас уперед — безмежна любов до землі та віра в те, що праця
+          принесе плоди.
+        </p>
+        <div class="about-images">
+          <img
+            src="../static/img/photo_2025-04-22_23-14-30.jpg"
+            alt="Обладнання"
+            class="rounded-img"
+          />
+          <img
+            src="../static/img/photo_2025-04-22_23-14-41.jpg"
+            alt="Засновники"
+            class="rounded-img"
+          />
+        </div>
+      </div>
+      <p class="second">
+        З часом ми зрозуміли, що ключ до успіху – це не боятися змін. Ми почали
+        використовувати новітні методи догляду за рослинами, вкладали кошти в
+        якісне обладнання, шукали кращі сорти. І головне – не припиняли вірити в
+        нашу справу.
+      </p>
+
+      <section class="cta">
+        <a href="{% url 'contact' %}" class="button">ОТРИМАТИ ОПТОВІ ЦІНИ</a>
+      </section>
+    </main>
+  </body>
+</html>

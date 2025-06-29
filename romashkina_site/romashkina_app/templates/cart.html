@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина | Інтернет-магазин</title>
+    <link rel="stylesheet" href="{% static 'style/cart.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Ваша корзина</h1>
+        <a href="{% url 'shop' %}" class="continue-shopping"
+          >← Продовжити покупки</a
+        >
+      </header>
+
+      <div class="cart-items">
+        {% for item in cart_items %}
+        <div class="cart-item">
+          <img
+            src="{{ item.product.image.url }}"
+            alt="{{ item.product.name }}"
+            class="product-image"
+          />
+          <div class="product-info">
+            <div class="product-name">{{ item.product.name }}</div>
+            <div class="product-price">{{ item.subtotal }} ₴</div>
+          </div>
+          <form
+            action="{% url 'cart_update' item.product.id %}"
+            method="post"
+            class="quantity-controls"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              name="change_quantity"
+              value="-1"
+              class="qty-btn"
+              {%
+              if
+              item.quantity
+              <="1"
+              %}disabled{%
+              endif
+              %}
+            >
+              −
+            </button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <button
+              type="submit"
+              name="change_quantity"
+              value="1"
+              class="qty-btn"
+            >
+              +
+            </button>
+          </form>
+          <a
+            href="{% url 'cart_remove' item.product.id %}"
+            class="remove-btn"
+            title="Видалити"
+            >×</a
+          >
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="customer-info">
+        <h2 class="section-title">Дані отримувача</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="receiver-name">ПІБ отримувача</label>
+            <input
+              type="text"
+              id="receiver-name"
+              name="receiver_name"
+              placeholder="Повне ім'я"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="receiver-phone">Телефон</label>
+            <input
+              type="tel"
+              id="receiver-phone"
+              name="receiver_phone"
+              placeholder="Номер телефону"
+              pattern="[0-9]{10}"
+              title="10 цифр без коду країни"
+              required
+            />
+          </div>
+          <div class="form-group" id="delivery">
+            <label for="delivery">Відділення</label>
+             <div class="nova-poshta-container">
+            {% include 'buttonHtml_v3.html' %}
+          </div>    
+        </div>
+      </div>
+
+      <div class="customer-info">
+        <h2 class="section-title">Спосіб оплати</h2>
+        <div class="payment-row">
+          <div class="payment-method">
+            <div class="payment-option">
+              <input
+                type="radio"
+                id="transfer"
+                name="payment_method"
+                value="transfer"
+                checked
+              />
+              <label for="transfer">Переказ на карту</label>
+            </div>
+            <div class="payment-option">
+              <input
+                type="radio"
+                id="cash_on_delivery"
+                name="payment_method"
+                value="cash_on_delivery"
+              />
+              <label for="cash_on_delivery">Накладений платіж</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+        <div>
+          <div class="total-price">{{ total_price }} ₴</div>
+          <a href="{% url 'cart_clear' %}" class="clear-cart"
+            >Очистити корзину</a
+          >
+        </div>
+        <button type="button" class="checkout-btn" onclick="submitOrder()">
+          Оформити замовлення
+        </button>
+      </div>
+    </div>
+
+    <form
+      id="order-form"
+      method="post"
+      action="{% url 'create_order' %}"
+      style="display: none"
+    >
+      {% csrf_token %}
+      <input type="hidden" name="order_data" id="order-data" />
+    </form>
+
+    <script>
+      function submitOrder() {
+        // Збираємо всі дані замовлення
+        const npButton = document.querySelector(".nova-poshta-button");
+        const paymentMethod = document.querySelector(
+          'input[name="payment_method"]:checked'
+        ).value;
+        const receiverName = document.getElementById("receiver-name").value;
+        const receiverPhone = document.getElementById("receiver-phone").value;
+
+        // Валідація даних
+        if (!receiverName || !receiverPhone) {
+          alert("Будь ласка, заповніть всі обов'язкові поля");
+          return;
+        }
+
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(receiverPhone)) {
+          alert("Будь ласка, введіть коректний номер телефону (10 цифр)");
+          return;
+        }
+
+        const orderData = {
+          delivery_data: {
+            department_name: npButton.querySelector(".text").textContent,
+            department_address:
+              npButton.querySelector(".text-description").textContent,
+          },
+          receiver_info: {
+            full_name: receiverName,
+            phone: receiverPhone,
+          },
+          products_data: [],
+          total_price: document
+            .querySelector(".total-price")
+            .textContent.replace(" ₴", ""),
+          payment_method: paymentMethod,
+        };
+
+        // Додаємо товари
+        document.querySelectorAll(".cart-item").forEach((item) => {
+          orderData.products_data.push({
+            name: item.querySelector(".product-name").textContent,
+            price: item
+              .querySelector(".product-price")
+              .textContent.replace(" ₴", ""),
+            quantity: item.querySelector(".qty-value").textContent,
+          });
+        });
+
+        // Відправляємо дані
+        const form = document.getElementById("order-form");
+        form.querySelector("#order-data").value = JSON.stringify(orderData);
+        form.submit();
+      }
+    </script>
+  </body>
+</html>

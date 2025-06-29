@@ -1,0 +1,186 @@
+/* Стилі для повідомлення на shop.html */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #222;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 5% 0% 10%;
+  background-color: #ffe235;
+}
+
+.logo img {
+  height: 100px;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #444141;
+  font-size: 20px;
+}
+
+.active-page {
+  color: #000000;
+  font-size: 25px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.message {
+  background-color: #ffeb3b;
+  padding: 20px 40px;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 4vw;
+}
+
+.product-card {
+  background: #ffe235;
+  border-radius: 1vw;
+  padding: 1vw 2vw;
+  width: 18vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* плавний перехід трансформації */
+}
+
+.product-card:hover {
+  transform: scale(1.1); /* збільшуємо кнопку на 10% */
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 1vw;
+}
+
+.product-card h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3vw;
+  margin: 1vh 0;
+  color: #333;
+}
+
+.product-card button {
+  background-color: #ffe96b;
+  border: none;
+  padding: 0.8vw 1.5vw;
+  border-radius: 0.8vw;
+  font-family: "Comfortaa", cursive;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (min-width: 601px) {
+  .products-mobile {
+    display: none;
+  }
+}
+/* =================================================================== */
+@media (max-width: 600px) {
+  .products-desktop {
+    display: none !important;
+  }
+
+  /* Базові стилі для мобільної версії */
+  .products-mobile {
+    display: block;
+    padding: 0 5px;
+    margin-bottom: 30px;
+    height: 70vh;
+  }
+
+  /* Контейнер слайдера */
+  .swiper {
+    width: 90vw;
+    height: 75vh;
+    padding: 20px 0 40px;
+    overflow: hidden;
+  }
+
+  /* Обгортка слайдів */
+  .swiper-wrapper {
+    /* background-color: green; */
+
+    align-items: center; /* Вирівнює слайди по центру */
+  }
+
+  /* Окремий слайд */
+  .swiper-slide {
+    padding: 0 10px;
+    transition: all 0.3s ease;
+  }
+
+  /* Картка продукту */
+  .product-card {
+    background: #ffe235;
+    border-radius: 4vw;
+    margin: 67px auto 0px auto;
+    padding: 1vw 2vw;
+    width: 65vw;
+    height: 60vh; /* Змінюємо з 18vw на 100% */
+    box-sizing: border-box; /* Важливо - враховує padding у загальну ширину */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  /* Зображення продукту */
+  .product-card img {
+    width: 72%;
+    border-radius: 1vw;
+    display: block;
+    margin: 5vw auto 0 auto;
+  }
+
+  /* Назва продукту */
+  .product-card h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 3vh;
+    margin: 1vh auto;
+    color: #333;
+    text-align: left;
+  }
+
+  /* Ціна */
+  .product-card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 2vh;
+    text-align: left;
+    margin: 1vh auto;
+    color: #333;
+  }
+
+  .product-card button {
+    background-color: #ffe96b;
+    border: none;
+    padding: 0.8vw 1.5vw;
+    border-radius: 0.8vw;
+    font-family: "Comfortaa", cursive;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 3vh;
+  }
+}

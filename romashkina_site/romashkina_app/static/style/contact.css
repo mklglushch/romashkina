@@ -1,0 +1,127 @@
+/* ====== базовий reset ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: 30% auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ====== header ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe235;
+  padding: 1vw 5vw 0vw 7vw;
+}
+
+nav a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  color: #444141;
+  font-weight: 100;
+  font-size: 1.3vw;
+  margin-left: 1vw;
+}
+
+.logo img {
+  height: 5vw;
+}
+
+.active-page {
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1.4vw;
+}
+
+/* ===== Variables ===== */
+:root {
+  --clr-text: #111;
+  --clr-bg-input: rgba(255, 255, 255, 0.6);
+  --clr-input-focus: #fff;
+  --clr-input-shadow: rgba(0, 0, 0, 0.2);
+  --clr-btn-bg: #000;
+  --clr-btn-text: #ffeb3b;
+  --font-base: "Roboto", sans-serif;
+  --font-heading: "Comfortaa", cursive;
+}
+
+/* ===== Contacts Section ===== */
+.contact-hero {
+  margin-top: 8vh;
+  padding: 5vh 5vw;
+  text-align: center;
+}
+.contact-hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3vw;
+  margin-bottom: 4vw;
+  color: var(--clr-text);
+}
+
+/* ==== Форма ==== */
+
+.form-row {
+  display: flex;
+  gap: 5vw;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  text-align: start;
+  flex-direction: column;
+  min-width: 460px;
+  margin-bottom: 1vw;
+}
+.form-group label {
+  margin-bottom: 0.5vh;
+  font-size: 2vw;
+  font-family: "Comfortaa", cursive;
+}
+
+.form-group input,
+select {
+  min-width: 200px;
+  height: 3.5vh;
+  border: none;
+  border-radius: 0.7vh;
+  background-color: #d9d9d9;
+  padding-left: 10px;
+}
+
+/* ===== Submit Button ===== */
+.form-actions {
+  text-align: center;
+  margin-top: 8vh;
+}
+.form-actions button {
+  font-family: var(--font-heading);
+  font-size: 2vw;
+  font-weight: 700;
+  position: fixed;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clr-btn-bg);
+  color: var(--clr-btn-text);
+  border: none;
+  border-radius: 1vw;
+  padding: 1vw 2vw;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-actions button:hover {
+  background: #333;
+}
+
+.message{
+  font-size: 1vw;
+}

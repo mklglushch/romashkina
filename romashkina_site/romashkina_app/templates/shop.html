@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ромашкіна | Магазин</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+  <body background="../static/img/фон.webp">
+    <header>
+      <div class="logo">
+        <img src="{% static 'img/Frame 1 1.png' %}" alt="Ромашкіна" />
+      </div>
+      <nav>
+        <a href="{% url 'main' %}">Головна</a>
+        <a href="{% url 'shop' %}" class="active-page">Магазин</a>
+        <a href="{% url 'about' %}">Про нас</a>
+        <a href="{% url 'contact' %}">Контакти</a>
+        <a href="{% url 'cart_detail' %}" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          {% if cart_count %}<span class="cart-count">{{ cart_count }}</span>{% endif %}
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Десктопна версія -->
+      <div class="products-desktop">
+        <div class="products">
+          {% for product in products %}
+          <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.price }} ₴</p>
+            <form action="{% url 'cart_add' product.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Купити</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Мобільна версія -->
+      <div class="products-mobile">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for product in products %}
+            <div class="swiper-slide">
+              <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.price }} ₴</p>
+                <form action="{% url 'cart_add' product.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit">Купити</button>
+                </form>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      function initMobileSwiper() {
+        const swiperEl = document.querySelector('.products-mobile .swiper');
+        if (!swiperEl) return;
+        
+        if (window.innerWidth <= 600) {
+          if (!swiperEl.swiper) {
+            new Swiper(swiperEl, {
+              slidesPerView: 'auto',
+              centeredSlides: true,
+              spaceBetween: 20,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            });
+          }
+        } else {
+          if (swiperEl.swiper) {
+            swiperEl.swiper.destroy(true, true);
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        initMobileSwiper();
+        window.addEventListener('resize', initMobileSwiper);
+      });
+    </script>
+</body>
+</html>

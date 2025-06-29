@@ -1,0 +1,104 @@
+/* Збільшуємо зручність роботи з відносними розмірами */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Загальні налаштування сторінки */
+body {
+  background-size: 30% auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Шапка */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe235;
+  padding: 1vw 5vw 0vw 7vw;
+}
+
+nav a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  color: #444141;
+  font-weight: 100;
+  font-size: 1.3vw;
+  margin-left: 1vw;
+}
+
+.logo img {
+  height: 5vw;
+}
+
+.active-page {
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1.4vw;
+}
+
+/* Герой-секція */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+}
+
+.hero-image {
+  flex: 1 1 40vw;
+  text-align: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 40vw;
+  height: auto;
+  border-radius: 2vh;
+}
+
+.hero-text {
+  flex: 1 1 40vw;
+  max-width: 40vw;
+  margin-left: 5vw;
+}
+
+.hero-text h1 {
+  font-family: "Comfortaa", cursive;
+  font-size: 6vh;
+  margin-bottom: 2vh;
+}
+
+.hero-text p {
+  font-size: 2.2vh;
+  line-height: 3vh;
+  margin-bottom: 2vh;
+}
+
+/* Кнопка-посилання на продукцію */
+.cta {
+  font-family: "Roboto", sans-serif;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  bottom: 6vh;
+}
+
+.button {
+  display: inline-block;
+  background: #000;
+  color: #ffeb3b;
+  border-radius: 1vw;
+  font-weight: 700;
+  font-family: "Comfortaa", cursive;
+  text-decoration: none;
+  font-size: 2vw;
+  padding: 1vw 1vw 1vw 1vw;
+}
