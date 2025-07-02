@@ -1,4 +1,4 @@
-/* ====== базовий reset ====== */
+/* ====== Базовий reset ====== */
 * {
   margin: 0;
   padding: 0;
@@ -10,35 +10,6 @@ body {
   background-repeat: repeat;
   background-position: center;
   background-attachment: fixed;
-}
-
-/* ====== header ====== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffe235;
-  padding: 1vw 5vw 0vw 7vw;
-}
-
-nav a {
-  font-family: "Roboto", sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  color: #444141;
-  font-weight: 100;
-  font-size: 1.3vw;
-  margin-left: 1vw;
-}
-
-.logo img {
-  height: 5vw;
-}
-
-.active-page {
-  color: #000000;
-  font-weight: bolder;
-  font-size: 1.4vw;
 }
 
 /* ===== Variables ===== */
@@ -53,75 +24,213 @@ nav a {
   --font-heading: "Comfortaa", cursive;
 }
 
+/* ====== Header ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe235;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+nav a {
+  font-family: var(--font-base);
+  text-decoration: none;
+  color: #444141;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.active-page {
+  color: #000000;
+  font-weight: bold;
+}
+
 /* ===== Contacts Section ===== */
 .contact-hero {
-  margin-top: 8vh;
-  padding: 5vh 5vw;
+  margin-top: 30px;
+  padding: 20px;
   text-align: center;
 }
+
 .contact-hero h1 {
   font-family: var(--font-heading);
-  font-size: 3vw;
-  margin-bottom: 4vw;
+  font-size: 24px;
+  margin-bottom: 20px;
   color: var(--clr-text);
 }
 
 /* ==== Форма ==== */
-
 .form-row {
   display: flex;
-  gap: 5vw;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 15px;
 }
 
 .form-group {
   display: flex;
   text-align: start;
   flex-direction: column;
-  min-width: 460px;
-  margin-bottom: 1vw;
+  width: 100%;
+  margin-bottom: 15px;
 }
+
 .form-group label {
-  margin-bottom: 0.5vh;
-  font-size: 2vw;
-  font-family: "Comfortaa", cursive;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-family: var(--font-heading);
 }
 
 .form-group input,
-select {
-  min-width: 200px;
-  height: 3.5vh;
+.form-group select {
+  width: 100%;
+  height: 40px;
   border: none;
-  border-radius: 0.7vh;
+  border-radius: 8px;
   background-color: #d9d9d9;
   padding-left: 10px;
+  font-size: 16px;
 }
 
 /* ===== Submit Button ===== */
 .form-actions {
   text-align: center;
-  margin-top: 8vh;
+  margin-top: 30px;
+  padding-bottom: 80px;
 }
+
 .form-actions button {
   font-family: var(--font-heading);
-  font-size: 2vw;
+  font-size: 18px;
   font-weight: 700;
-  position: fixed;
-  bottom: 3vh;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  transform: none;
   background: var(--clr-btn-bg);
   color: var(--clr-btn-text);
   border: none;
-  border-radius: 1vw;
-  padding: 1vw 2vw;
+  border-radius: 25px;
+  padding: 12px 25px;
   cursor: pointer;
   transition: background 0.3s;
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto;
 }
+
 .form-actions button:hover {
   background: #333;
 }
 
-.message{
-  font-size: 1vw;
+.message {
+  font-size: 14px;
+}
+
+/* ===== Медіазапити для планшетів ===== */
+@media (min-width: 768px) {
+  header {
+    padding: 1vw 5vw 0vw 7vw;
+    flex-wrap: nowrap;
+  }
+
+  nav {
+    justify-content: flex-end;
+    gap: 1vw;
+  }
+
+  nav a {
+    font-size: 1.3vw;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  .active-page {
+    font-size: 1.4vw;
+  }
+
+  .contact-hero {
+    margin-top: 8vh;
+    padding: 5vh 5vw;
+  }
+
+  .contact-hero h1 {
+    font-size: 3vw;
+    margin-bottom: 4vw;
+  }
+
+  .form-row {
+    flex-direction: row;
+    gap: 5vw;
+    padding: 0;
+  }
+
+  .form-group {
+    min-width: 460px;
+    margin-bottom: 1vw;
+  }
+
+  .form-group label {
+    font-size: 2vw;
+  }
+
+  .form-group input,
+  .form-group select {
+    height: 3.5vh;
+    border-radius: 0.7vh;
+  }
+
+  .form-actions {
+    margin-top: 8vh;
+    padding-bottom: 0;
+  }
+
+  .form-actions button {
+    position: fixed;
+    bottom: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2vw;
+    border-radius: 1vw;
+    padding: 1vw 2vw;
+    width: auto;
+  }
+
+  .message {
+    font-size: 1vw;
+  }
+}
+
+/* ===== Медіазапити для великих екранів ===== */
+@media (min-width: 1200px) {
+  nav a {
+    font-size: 16px;
+  }
+
+  .active-page {
+    font-size: 17px;
+  }
+
+  .form-actions button {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 300px) {
+  .logo img {
+    display: none;
+  }
 }
