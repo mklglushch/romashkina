@@ -43,7 +43,7 @@ def contact_page(request):
         phone = request.POST.get("phone", "").strip()
 
         message = (
-            "Нова заявка:\n"
+            "Нова оптовий покупець:\n"
             f"Ім'я: {first_name}\n"
             f"Прізвище: {last_name}\n"
             f"Месенджер: {contact_method}\n"

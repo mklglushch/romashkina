@@ -80,7 +80,7 @@ nav a {
 
 .about-text-up h2 {
   font-family: "Roboto", sans-serif;
-  font-size: 1.9vw !important;
+  font-size: 1.9vw;
   margin-left: 10px;
   font-weight: 600;
   line-height: 1.3;
@@ -94,7 +94,7 @@ nav a {
 .first {
   display: inline-block;
   font-family: "Roboto", sans-serif;
-  font-size: 1.6vw !important;
+  font-size: 1.6vw;
   max-width: 36vw;
   line-height: 2.15vw;
 }
@@ -124,45 +124,68 @@ nav a {
 }
 
 /* пластилінова верстка */
-
-@media (max-width: 1700px) {
-  .about {
-    bottom: 18vh;
+@media (max-width: 768px) {
+  .logo img {
+    display: none;
   }
-}
 
-@media (max-width: 1500px) {
-  .about {
-    bottom: 22vh;
-  }
-}
-
-@media (max-width: 1024px) {
-  /* HEADER */
   header {
-    padding: 1vw 5vw 0vw 7vw;
+    margin-top: 2vh;
   }
+
   nav a {
-    font-size: 1.7vw;
+    margin-top: 10vh;
+    font-size: 3.5vw;
     margin-left: 1vw;
   }
+
   .active-page {
-    font-size: 1.8vw;
+    font-size: 4vw;
   }
 
-  .logo img {
-    height: 7vw;
-  }
-  /* ABOUT */
   .about {
-    bottom: 20vh;
+    top: 10vh;
+    left: 3vw;
   }
 
   .about-text-up h1 {
-    font-size: 6vw;
+    font-size: 5vh;
+    text-align: left;
   }
+
+  .about-text-up h2 {
+    font-size: 2vh;
+    margin: 0;
+    color: #444141;
+    line-height: normal;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .between {
+    margin-left: 0;
+  }
+
+  .first {
+    color: #444141;
+    text-align: center;
+    max-width: 90vw;
+    font-size: 2vh;
+    line-height: normal;
+  }
+
+  .second {
+    display: none;
+  }
+
+  .cta {
+    bottom: 4vh;
+    width: 100vw;
+  }
+
   .button {
-    font-size: 1.5vw;
-    padding: 1.5vw 1.5vw 1.5vw 1.5vw;
+    border-radius: 10vw;
+    font-size: 6vw;
+    padding: 3vw 5vw;
   }
 }

@@ -94,15 +94,37 @@ main {
   cursor: pointer;
 }
 
-@media (min-width: 601px) {
+@media (min-width: 769px) {
   .products-mobile {
     display: none;
   }
 }
 /* =================================================================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .products-desktop {
     display: none !important;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  header {
+    margin-top: 2vh;
+  }
+
+  nav a {
+    margin-top: 10vh;
+    font-size: 3.5vw;
+    margin-left: 1vw;
+  }
+
+  .active-page {
+    font-size: 4vw;
+  }
+
+  .cart-icon{
+    font-size: 2vh;
   }
 
   /* Базові стилі для мобільної версії */
@@ -115,7 +137,8 @@ main {
 
   /* Контейнер слайдера */
   .swiper {
-    width: 90vw;
+    margin-top: 7vh;
+    width: 100vw;
     height: 75vh;
     padding: 20px 0 40px;
     overflow: hidden;
@@ -123,9 +146,7 @@ main {
 
   /* Обгортка слайдів */
   .swiper-wrapper {
-    /* background-color: green; */
-
-    align-items: center; /* Вирівнює слайди по центру */
+    align-items: center;
   }
 
   /* Окремий слайд */
@@ -139,9 +160,9 @@ main {
     background: #ffe235;
     border-radius: 4vw;
     margin: 67px auto 0px auto;
-    padding: 1vw 2vw;
+    padding: 5vw 2vw;
     width: 65vw;
-    height: 60vh; /* Змінюємо з 18vw на 100% */
+    height: 105%vh; /* Змінюємо з 18vw на 100% */
     box-sizing: border-box; /* Важливо - враховує padding у загальну ширину */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -177,10 +198,17 @@ main {
     background-color: #ffe96b;
     border: none;
     padding: 0.8vw 1.5vw;
-    border-radius: 0.8vw;
+    border-radius: 2vw;
     font-family: "Comfortaa", cursive;
     font-weight: 700;
     cursor: pointer;
     font-size: 3vh;
+    color: #000;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #ad950d !important;
+    margin: 0;
   }
 }

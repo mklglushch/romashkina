@@ -4,4 +4,4 @@ from .models import Product
 admin.site.register(Product)
 # class ProductAdmin(admin.ModelAdmin):
 #     list_editable = ['price', "available"]
-# редагування ціни одразу в адмінці
+# редагування ціни одразу в адмін

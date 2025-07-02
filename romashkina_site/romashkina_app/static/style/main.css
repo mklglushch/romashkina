@@ -102,3 +102,61 @@ nav a {
   font-size: 2vw;
   padding: 1vw 1vw 1vw 1vw;
 }
+
+@media (max-width: 600px) {
+  .logo {
+    display: none;
+  }
+  nav a {
+    font-size: 3.5vw;
+  }
+
+  header {
+    margin-top: 2vh;
+  }
+
+  .active-page {
+    font-size: 4vw;
+  }
+  .hero {
+    display: block;
+  }
+  .hero-image img {
+    width: 100vw;
+    max-width: 1000vw;
+  }
+
+  .hero-text {
+    max-width: 100vw;
+  }
+
+  .hero-text h1 {
+    font-family: "Comfortaa", cursive;
+    font-size: 5vh;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    max-width: 100vw;
+  }
+
+  .hero-text p {
+    font-size: 3vh;
+    line-height: 3vh;
+    margin-bottom: 2vh;
+    max-width: 100vw;
+
+  }
+
+  header {
+    justify-content: flex-end;
+  }
+
+  .cta {
+    bottom: 8vh;
+  }
+
+  .button {
+    border-radius: 10vw;
+    font-size: 7vw;
+    padding: 3vw 5vw;
+  }
+}

@@ -63,6 +63,8 @@
             </div>
             {% endfor %}
           </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
     </main>
@@ -78,11 +80,12 @@
             new Swiper(swiperEl, {
               slidesPerView: 'auto',
               centeredSlides: true,
+              loop: true,
               spaceBetween: 20,
-              pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-              },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+                },
             });
           }
         } else {
