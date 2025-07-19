@@ -38,14 +38,12 @@ def send_telegram_message(text: str) -> bool:
 def contact_page(request):
     if request.method == "POST":
         first_name = request.POST.get("firstName", "").strip()
-        last_name = request.POST.get("lastName", "").strip()
         contact_method = request.POST.get("contactMethod", "").strip()
         phone = request.POST.get("phone", "").strip()
 
         message = (
             "Нова оптовий покупець:\n"
-            f"Ім'я: {first_name}\n"
-            f"Прізвище: {last_name}\n"
+            f"Ім'я та прізвище: {first_name}\n"
             f"Месенджер: {contact_method}\n"
             f"Телефон: {phone}"
         )

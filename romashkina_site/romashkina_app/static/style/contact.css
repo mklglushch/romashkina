@@ -30,38 +30,73 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: #ffe235;
-  padding: 15px 20px;
-  flex-wrap: wrap;
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+  padding: 1vw 5vw 0vw 7vw;
 }
 
 nav a {
-  font-family: var(--font-base);
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
+  font-weight: bold;
   color: #444141;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 1.3vw;
+  margin-left: 1vw;
 }
 
 .logo img {
-  height: 50px;
+  height: 5vw;
 }
 
 .active-page {
   color: #000000;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: 1.4vw;
+}
+/* ===== Contacts Section ===== */
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 0vw 25vw;
 }
 
-/* ===== Contacts Section ===== */
+.detail {
+  width: 25%;
+  /* background: #fff; */
+  border-radius: 8px;
+  padding: 10px;
+  /* box-shadow: 0 1px 4px rgba(0,0,0,0.1); */
+  text-align: left;
+}
+
+.detail span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #2e7d32; /* темно-зелений */
+}
+
+.detail p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+#map {
+  height: 300px;
+  width: 50%;
+  border-radius: 12px;
+  margin: 0 25vw;
+}
+
+h1 {
+  text-align: center;
+  margin: 1vh 0;
+}
+
 .contact-hero {
   margin-top: 30px;
-  padding: 20px;
   text-align: center;
 }
 
@@ -75,9 +110,9 @@ nav a {
 /* ==== Форма ==== */
 .form-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
-  padding: 0 15px;
+  padding: 0 25vw;
 }
 
 .form-group {
@@ -90,7 +125,7 @@ nav a {
 
 .form-group label {
   margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 15px;
   font-family: var(--font-heading);
 }
 
@@ -100,7 +135,7 @@ nav a {
   height: 40px;
   border: none;
   border-radius: 8px;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   padding-left: 10px;
   font-size: 16px;
 }
@@ -137,12 +172,62 @@ nav a {
 .message {
   font-size: 14px;
 }
+@media (max-width: 1200px) {
+  nav a {
+    font-size: 16px;
+  }
 
-/* ===== Медіазапити для планшетів ===== */
-@media (min-width: 768px) {
+  .active-page {
+    font-size: 17px;
+  }
+
+  .form-actions button {
+    font-size: 20px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+  .contact-details {
+    margin: 0 15vw;
+  }
+
+  .form-row {
+    padding: 0 15vw;
+  }
+
+  #map {
+    width: 70%;
+    margin: 0 15vw;
+  }
+}
+
+@media (max-width: 937px) {
+  .detail span {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 937px) {
+  .detail span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 839px) {
+  .detail span,
+  .detail p {
+    font-size: 13px;
+  }
+  .form-group label {
+    font-size: 13px;
+  }
+}
+@media (max-width: 768px) {
   header {
     padding: 1vw 5vw 0vw 7vw;
     flex-wrap: nowrap;
+    margin-top: 2vh;
   }
 
   nav {
@@ -151,7 +236,7 @@ nav a {
   }
 
   nav a {
-    font-size: 1.3vw;
+    font-size: 3.5vw;
   }
 
   .logo img {
@@ -159,12 +244,12 @@ nav a {
   }
 
   .active-page {
-    font-size: 1.4vw;
+    font-size: 4vw;
   }
 
   .contact-hero {
-    margin-top: 8vh;
-    padding: 5vh 5vw;
+    margin-top: 0;
+    padding: 0 5vw;
   }
 
   .contact-hero h1 {
@@ -173,9 +258,9 @@ nav a {
   }
 
   .form-row {
-    flex-direction: row;
-    gap: 5vw;
-    padding: 0;
+    flex-direction: column;
+    gap: 1vw;
+    padding: 0 10vw;
   }
 
   .form-group {
@@ -212,25 +297,180 @@ nav a {
   .message {
     font-size: 1vw;
   }
-}
 
-/* ===== Медіазапити для великих екранів ===== */
-@media (min-width: 1200px) {
-  nav a {
+  .contact-details {
+    gap: 1vw;
+  }
+
+  .detail {
+    width: 32%;
+  }
+
+  .detail span {
     font-size: 16px;
   }
 
-  .active-page {
-    font-size: 17px;
+  .detail p {
+    font-size: 15px;
   }
 
   .form-actions button {
-    font-size: 20px;
+    position: relative;
+    left: 0;
+    transform: translateX(-0%);
   }
 }
 
-@media (min-width: 300px) {
+@media (max-width: 674px) {
+  .detail span,
+  .detail p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 603px) {
+  .detail p {
+    font-size: 13px;
+  }
+
+  #map {
+    width: 80%;
+    margin: 0 10vw;
+  }
+
+  .contact-details {
+    margin: 0 10vw;
+  }
+
+  .contact-hero {
+    padding: 0 2vw;
+  }
+}
+
+@media (max-width: 536px) {
+  .detail span,
+  .detail p {
+    font-size: 2.6vw;
+  }
+
+  .form-group {
+    min-width: 20vw;
+    width: 77vw;
+  }
+}
+
+@media (max-width: 471px) {
+  .detail span,
+  .detail p {
+    font-size: 2.4vw;
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+    padding: 0;
+    justify-content: end;
+    margin-right: 5%;
+    width: 95%;
+  }
+
+  .active-page {
+    font-size: 15px;
+  }
+
+  .detail {
+    padding: 10px 0;
+    width: 32.5%;
+  }
+
+  .detail p,
+  .detail span {
+    font-size: 3.3vw;
+  }
+
+  .contact-details {
+    margin: 0 5vw;
+    /* gap: 13.9vw; */
+    justify-content: start;
+    max-width: 90vw;
+  }
+
+  #map {
+    width: 90%;
+    margin: 0 5vw;
+  }
+
+  .leaflet-popup-content {
+    width: 230px;
+    font-size: 3vw !important;
+  }
+
+  .leaflet-left .leaflet-control {
+    margin-left: 13px !important;
+  }
+
+  .leaflet-top .leaflet-control {
+    margin-top: 57vw !important;
+  }
+
+  h1 {
+    text-align: start;
+    margin: 1vh 23.7vw;
+    width: fit-content;
+    font-size: 7vw;
+  }
+
+  .form-group {
+    width: fit-content;
+    min-width: 200px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 62vw;
+    margin: 1vw 12vw;
+  }
+
+  .form-group label {
+    font-size: 5vw;
+    width: fit-content;
+    margin: 0 12vw;
+  }
+
+  .contact-hero {
+    width: fit-content;
+  }
+
+  .form-row {
+    padding: 0 5vw;
+  }
+
+  .form-actions {
+    width: fit-content;
+  }
+
+  .form-actions button {
+    font-size: 8vw;
+    border-radius: 3vw;
+    padding: 2vw 2vw;
+    left: 21vw;
+    bottom: 8vh;
+  }
+}
+
+@media (max-width: 420px) {
+  #map {
+    height: 250px;
+  }
+}
+
+@media (max-width: 375px) {
   .logo img {
     display: none;
+  }
+
+  .form-group input,
+  .form-group select {
+    height: 5.5vh;
   }
 }

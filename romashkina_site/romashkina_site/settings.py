@@ -26,12 +26,9 @@ SECRET_KEY = 'django-insecure-^fv%8-(4(!!=7t&+aqnc86lng!hl$^(b$v071oly$_6k+zu_g@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0d17-77-52-195-210.ngrok-free.app',
-                 "127.0.0.1"]
+ALLOWED_HOSTS = ['*']  # Дозволяє всі домени
 
-CSRF_TRUSTED_ORIGINS = ["https://0d17-77-52-195-210.ngrok-free.app"
-                        
-]
+CSRF_TRUSTED_ORIGINS = ['https://*', 'http://*']  # Дозволяє всі HTTPS/HTTP джерела
 
 
 # Application definition

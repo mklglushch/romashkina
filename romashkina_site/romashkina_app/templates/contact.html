@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   </head>
   <body background="../static/img/фон.webp">
     <header>
@@ -26,8 +27,23 @@
 
     <!-- Contacts Section -->
     <main>
+      <div class="contact-details">
+        <div class="detail">
+          <span>📞 Телефон:</span>
+          <p>+380 67 123 45 67</p>
+        </div>
+        <div class="detail">
+          <span>✉️ Email:</span>
+          <p>info@romashkina.ua</p>
+        </div>
+        <div class="detail">
+          <span>🕒 Графік роботи:</span>
+          <p>Пн–Пт 09:00–18:00</p>
+        </div>
+      </div>
+      <div id="map"></div>
+      <h1>Дані для звʼязку</h1>
       <section class="contact-hero">
-        <h1>Тільки для Оптових та Корпоративних клієнтів</h1>
         <form
           action="{% url 'contact' %}"
           method="post"
@@ -37,28 +53,15 @@
           {% csrf_token %}
           <div class="form-row">
             <div class="form-group">
-              <label for="firstName">Ім’я</label>
+              <label for="firstName">Ім’я та прізвище</label>
               <input
                 type="text"
                 id="firstName"
                 name="firstName"
-                placeholder="Ім’я"
+                placeholder="Ім’я та прізвище"
                 required
               />
             </div>
-            <div class="form-group">
-              <label for="lastName">Прізвище</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="Прізвище"
-                required
-              />
-            </div>
-          </div>
-          <div class="form-row">
-            <!-- ========= -->
             <div class="form-group">
               <label for="contactMethod">Месенджер для зв'язку</label>
               <select id="contactMethod" name="contactMethod" required>
@@ -68,7 +71,6 @@
                 <option value="whatsapp">WhatsApp</option>
               </select>
             </div>
-
             <div class="form-group">
               <label for="phone">Моб. телефон</label>
               <input
@@ -93,15 +95,36 @@
         document.addEventListener("DOMContentLoaded", () => {
           const btn = document.getElementById("send_button");
           btn.textContent = "{{ message }}";
-          btn.style.fontSize = "18px"; 
+          btn.style.fontSize = "18px";
 
           setTimeout(() => {
             btn.textContent = "Надіслати";
-            btn.style.fontSize = ""; 
+            btn.style.fontSize = "";
           }, 5000);
         });
       </script>
       {% endif %}
     </main>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Координати
+      const coords = [48.71099, 30.45515];
+
+      // Ініціалізація карти
+      const map = L.map("map").setView(coords, 13);
+
+      // Підключення шарів OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+      }).addTo(map);
+
+      // Додавання маркера
+      const marker = L.marker(coords)
+        .addTo(map)
+        .bindPopup(
+          "<b>Ромашкіна</b><br>смт. Бабанка, вул. Квітнева(Гагаріна), 13"
+        )
+        .openPopup();
+    </script>
   </body>
 </html>
