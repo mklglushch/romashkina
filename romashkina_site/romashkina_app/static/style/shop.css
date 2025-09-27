@@ -59,16 +59,20 @@ main {
 }
 
 .products {
+  margin: 6vw 1vw 0 1vw;
   display: flex;
-  justify-content: center;
-  gap: 4vw;
+  gap: 2vw; /* відступ між картками */
+  justify-content: center; /* центруємо рядок */
+  flex-wrap: nowrap; /* всі залишаються в ряд */
 }
 
 .product-card {
+  flex: 1 1 18vw; /* елементи ділять простір між собою */
   background: #ffe235;
   border-radius: 1vw;
   padding: 1vw 2vw;
-  width: 18vw;
+  /* width: 18vw; */
+  min-width: 120px; /* але не стають меншими за 120px */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease; /* плавний перехід трансформації */
 }

@@ -19,11 +19,9 @@ class Cart:
             self.cart[pid] = quantity  # додаємо новий товар
         self.save()
 
-    def remove(self, product_id):
-        pid = str(product_id)
-        if pid in self.cart:
-            del self.cart[pid]  # видаляємо товар з корзини
-            self.save()
+    def remove(self):
+        del self.session[self.SESSION_KEY]  # Видаляємо кошик з сесії
+        self.save()  # Зберігаємо зміни
 
     def save(self):
         self.session.modified = True  # повідомляємо Django, що сесія була змінена

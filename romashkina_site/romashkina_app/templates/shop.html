@@ -32,15 +32,17 @@
       <div class="products-desktop">
         <div class="products">
           {% for product in products %}
-          <div class="product-card">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.price }} ₴</p>
-            <form action="{% url 'cart_add' product.id %}" method="post">
-              {% csrf_token %}
-              <button type="submit">Купити</button>
-            </form>
-          </div>
+            {% if product.visible %}
+            <div class="product-card">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.price }} ₴</p>
+              <form action="{% url 'cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Купити</button>
+              </form>
+            </div>
+            {% endif %}
           {% endfor %}
         </div>
       </div>

@@ -42,7 +42,7 @@ def contact_page(request):
         phone = request.POST.get("phone", "").strip()
 
         message = (
-            "Нова оптовий покупець:\n"
+            "Новий оптовий покупець\n"
             f"Ім'я та прізвище: {first_name}\n"
             f"Месенджер: {contact_method}\n"
             f"Телефон: {phone}"
@@ -181,8 +181,8 @@ def cart_update(request, product_id):
 
 def cart_clear(request):
     cart = Cart(request)
-    cart.clear()  # очищаємо корзину
-    return redirect('cart_detail')  # редірект на сторінку корзини
+    cart.remove()  # очищаємо корзину
+    return redirect('shop')  # редірект на сторінку корзини
 
 def shop_page(request):
         products = Product.objects.all()
