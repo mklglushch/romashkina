@@ -52,17 +52,19 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for product in products %}
-            <div class="swiper-slide">
-              <div class="product-card">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.price }} ₴</p>
-                <form action="{% url 'cart_add' product.id %}" method="post">
-                  {% csrf_token %}
-                  <button type="submit">Купити</button>
-                </form>
-              </div>
-            </div>
+              {% if product.visible %}
+                <div class="swiper-slide">
+                  <div class="product-card">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.price }} ₴</p>
+                    <form action="{% url 'cart_add' product.id %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit">Купити</button>
+                    </form>
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
           </div>
           <div class="swiper-button-prev"></div>
