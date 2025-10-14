@@ -2,25 +2,39 @@
 
 <!DOCTYPE html>
 <html lang="uk">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Сік Ромашкіна</title>
-    {% load static %}
+    
+    <title>Сік Ромашкіна — Натуральний сік прямого віджиму без консервантів</title>
+
+    <meta name="description" content="Замовляйте натуральні соки «Ромашкіна» прямого віджиму. 🍏 Свіжий смак без додавання цукру, барвників та консервантів. Кращий вибір для здорового харчування." />
+    <meta name="keywords" content="сік Ромашкіна, сік прямого віджиму, натуральний сік, сік без цукру, купити сік, екологічний сік" />
+    
+    {% comment %} Припускаємо, що це головна сторінка {% endcomment %}
+    <link rel="canonical" href="https://romashkina.com.ua{% url 'main' %}" />
+
+    <meta property="og:title" content="Сік Ромашкіна — Смак природи в кожному ковтку" />
+    <meta property="og:description" content="Натуральні соки прямого віджиму. Якість без компромісів." />
+    <meta property="og:type" content="website" />
+    {% comment %} Замініть 'URL_TO_HERO_IMAGE' на повний шлях до зображення для соцмереж {% endcomment %}
+    <meta property="og:image" content="https://romashkina.com.ua{% static 'img/Group 1.png' %}" /> 
+    
+    {% comment %} Виправлений шлях до favicon з використанням тегу {% static %} {% endcomment %}
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'style/main.css' %}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap"
       rel="stylesheet"
     />
-  </head>
-  <body background="../static/img/фон.webp">
+</head>
+<body background="{% static 'img/фон.webp' %}">
     <header>
       <div class="logo">
-        <img src="../static/img/Frame 1 1.png" alt="Ромашкіна" />
+        <img src="{% static 'img/Frame 1 1.png' %}" alt="Логотип соку Ромашкіна" />
       </div>
       <nav>
-        <a href="{% url 'main' %}"  class="active-page">Головна</a>
+        <a href="{% url 'main' %}" class="active-page">Головна</a>
         <a href="{% url 'shop' %}">Магазин</a>
         <a href="{% url 'about' %}">Про нас</a>
         <a href="{% url 'contact' %}">Контакти</a>
@@ -30,19 +44,19 @@
     <main>
       <section class="hero">
         <div class="hero-image">
-          <img src="../static/img/Group 1.png" alt="Соки" />
+          <img src="{% static 'img/Group 1.png' %}" alt="Зображення набору натуральних соків Ромашкіна" />
         </div>
         <div class="hero-text">
-          <h1>Сік “Ромашкіна”</h1>
+          <h1>Сік «Ромашкіна»</h1>
           <p>
             Сік прямого віджиму з добірної сировини, без додавання консервантів
-            і барвників.<br />Свіжий смак природи в кожному ковтку
+            і барвників.<br />Свіжий смак природи в кожному ковтку!
           </p>
         </div>
       </section>
     </main>
     <section class="cta">
-      <a href="{% url 'shop' %}" class="button">ЗАМОВИТИ</a>
+      <a href="{% url 'shop' %}" class="button" title="Перейти в магазин і замовити сік">ЗАМОВИТИ СІК</a>
     </section>
-  </body>
+</body>
 </html>

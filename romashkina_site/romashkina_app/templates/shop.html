@@ -1,27 +1,39 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ромашкіна | Магазин</title>
-    {% load static %}
+    
+    <title>Магазин соків «Ромашкіна» | Купити натуральний сік прямого віджиму</title>
+
+    <meta name="description" content="Офіційний магазин натуральних соків «Ромашкіна». Перегляньте наш асортимент соків прямого віджиму з яблук, моркви, гарбуза та інших фруктів. Замовляйте онлайн!" />
+    <meta name="keywords" content="купити сік, натуральний сік, сік прямого віджиму, соки Ромашкіна ціна, асортимент соків, замовити сік онлайн" />
+
+    <link rel="canonical" href="https://romashkina.com.ua{% url 'shop' %}" />
+    
+    <meta property="og:title" content="Магазин соків «Ромашкіна»" />
+    <meta property="og:description" content="Натуральні соки прямого віджиму з доставкою." />
+    <meta property="og:type" content="product" /> 
+    
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'style/shop.css' %}" />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-  <body background="../static/img/фон.webp">
+<body background="{% static 'img/фон.webp' %}">
     <header>
       <div class="logo">
-        <img src="{% static 'img/Frame 1 1.png' %}" alt="Ромашкіна" />
+        <img src="{% static 'img/Frame 1 1.png' %}" alt="Логотип «Ромашкіна»" title="Перейти на головну сторінку" />
       </div>
       <nav>
         <a href="{% url 'main' %}">Головна</a>
-        <a href="{% url 'shop' %}" class="active-page">Магазин</a>
+        <a href="{% url 'shop' %}" class="active-page" aria-current="page">Магазин</a>
         <a href="{% url 'about' %}">Про нас</a>
         <a href="{% url 'contact' %}">Контакти</a>
-        <a href="{% url 'cart_detail' %}" class="cart-icon">
+        <a href="{% url 'cart_detail' %}" class="cart-icon" title="Кошик: {% if cart_count %}{{ cart_count }} товарів{% else %}порожній{% endif %}">
           <i class="fas fa-shopping-cart"></i>
           {% if cart_count %}<span class="cart-count">{{ cart_count }}</span>{% endif %}
         </a>
@@ -29,53 +41,53 @@
     </header>
 
     <main>
-      <!-- Десктопна версія -->
-      <div class="products-desktop">
-        <div class="products">
-          {% for product in products %}
-            {% if product.visible %}
-            <div class="product-card">
-              <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-              <h3>{{ product.name }}</h3>
-              <p>{{ product.price }} ₴</p>
-              <form action="{% url 'cart_add' product.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Купити</button>
-              </form>
-            </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- Мобільна версія -->
-      <div class="products-mobile">
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            {% for product in products %}
-              {% if product.visible %}
-                <div class="swiper-slide">
-                  <div class="product-card">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-                    <h3>{{ product.name }}</h3>
-                    <p>{{ product.price }} ₴</p>
-                    <form action="{% url 'cart_add' product.id %}" method="post">
-                      {% csrf_token %}
-                      <button type="submit">Купити</button>
-                    </form>
-                  </div>
+        <h1 class="visually-hidden">Каталог соків прямого віджиму «Ромашкіна»</h1>
+        
+        <section class="products-desktop">
+            <div class="products">
+              {% for product in products %}
+                {% if product.visible %}
+                <div class="product-card">
+                  <img src="{{ product.image.url }}" alt="Купити сік {{ product.name }} від Ромашкіна" title="Сік {{ product.name }}" />
+                  <h3>{{ product.name }}</h3>
+                  <p>{{ product.price }} ₴</p>
+                  <form action="{% url 'cart_add' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" title="Додати {{ product.name }} до кошика">В корзину</button>
+                  </form>
                 </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+        </section>
+
+        <section class="products-mobile">
+            <div class="swiper" role="region" aria-label="Слайдер товарів">
+                <div class="swiper-wrapper">
+                  {% for product in products %}
+                    {% if product.visible %}
+                      <div class="swiper-slide">
+                        <div class="product-card">
+                          <img src="{{ product.image.url }}" alt="Купити сік {{ product.name }} від Ромашкіна" title="Сік {{ product.name }}" />
+                          <h3>{{ product.name }}</h3>
+                          <p>{{ product.price }} ₴</p>
+                          <form action="{% url 'cart_add' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" title="Додати {{ product.name }} до кошика">Купити</button>
+                          </form>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="swiper-button-prev" role="button" aria-label="Попередній товар"></div>
+                <div class="swiper-button-next" role="button" aria-label="Наступний товар"></div>
+            </div>
+        </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
+     <script>
       function initMobileSwiper() {
         const swiperEl = document.querySelector('.products-mobile .swiper');
         if (!swiperEl) return;

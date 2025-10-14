@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Контакти — Ромашкіна</title>
+    <title>Контакти Ромашкіна | Телефон, Email, Адреса для оптових замовлень саджанців</title>
+    
     {% load static %}
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
 
     <link rel="stylesheet" href="{% static 'style/contact.css' %}" />
     <link
@@ -13,11 +14,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <meta
+      name="description"
+      content="Зв'яжіться з Ромашкіна для консультації, оптових замовлень саджанців або дізнайтеся наш графік роботи. Телефон: +380 67 123 45 67, Email: info@romashkina.ua."
+    />
+    <meta
+      name="keywords"
+      content="контакти Ромашкіна, оптові замовлення саджанців, телефон Ромашкіна, email, адреса, графік роботи, зв'язок"
+    />
   </head>
   <body background="../static/img/фон.webp">
     <header>
       <div class="logo">
-        <img src="../static/img/Frame 1 1.png" alt="Ромашкіна" />
+        <img src="../static/img/Frame 1 1.png" alt="Логотип Ромашкіна - контакти" />
       </div>
       <nav>
         <a href="{% url 'main' %}">Головна</a>
@@ -27,16 +37,15 @@
       </nav>
     </header>
 
-    <!-- Contacts Section -->
     <main>
       <div class="contact-details">
         <div class="detail">
           <span>📞 Телефон:</span>
-          <p>+380 67 123 45 67</p>
+          <p><a href="tel:+380671234567">+380 67 123 45 67</a></p>
         </div>
         <div class="detail">
           <span>✉️ Email:</span>
-          <p>info@romashkina.ua</p>
+          <p><a href="mailto:info@romashkina.ua">info@romashkina.ua</a></p>
         </div>
         <div class="detail">
           <span>🕒 Графік роботи:</span>
@@ -44,6 +53,7 @@
         </div>
       </div>
       <div id="map"></div>
+      
       <h1>Дані для звʼязку</h1>
       <section class="contact-hero">
         <form
@@ -67,7 +77,7 @@
             <div class="form-group">
               <label for="contactMethod">Месенджер для зв'язку</label>
               <select id="contactMethod" name="contactMethod" required>
-                <option value="" disabled selected>Оберіть месенджер</option>
+                <option value="" disabled selected hidden>Оберіть месенджер</option> 
                 <option value="telegram">Telegram</option>
                 <option value="viber">Viber</option>
                 <option value="whatsapp">WhatsApp</option>
@@ -86,7 +96,7 @@
           </div>
 
           <div class="form-actions">
-            <button type="submit" id="send_button">
+            <button type="submit" id="send_button" title="Надіслати контактні дані для зв'язку">
               {% if message %} {{ message }} {% else %} Надіслати {% endif %}
             </button>
           </div>
@@ -118,6 +128,8 @@
       // Підключення шарів OpenStreetMap
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
+        // SEO/Технічна оптимізація 8: Додана атрибуція для OpenStreetMap
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
       // Додавання маркера

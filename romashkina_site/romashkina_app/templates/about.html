@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ромашкіна | Про нас</title>
+    <title>Ромашкіна: Про нас | Історія сімейного бізнесу, якісні саджанці</title>
+    <meta
+      name="description"
+      content="Історія компанії Ромашкіна: як сімейний бізнес із продажу саджанців та рослин, заснований у 2014 році, виріс завдяки любові до землі та постійному розвитку."
+    />
+    <meta
+      name="keywords"
+      content="Ромашкіна, про нас, історія компанії, сімейний бізнес, саджанці, рослини, оптові ціни, 2014 рік"
+    />
     {% load static %}
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
 
     <link rel="stylesheet" href="{% static 'style/about.css' %}" />
     <link
@@ -13,15 +21,15 @@
       rel="stylesheet"
     />
   </head>
-  <body background="../static/img/фон.webp">
+  <body  background="../static/img/фон.webp">
     <header>
       <div class="logo">
-        <img src="../static/img/Frame 1 1.png" alt="Ромашкіна" />
+        <img src="../static/img/Frame 1 1.png" alt="Логотип Ромашкіна" />
       </div>
       <nav>
         <a href="{% url 'main' %}">Головна</a>
-        <a href="{% url 'shop' %}">Магазин</a>
-        <a href="{% url 'about' %}"  class="active-page">Про нас</a>
+        <a href="{% url 'shop' %}">Магазин</a> 
+        <a href="{% url 'about' %}" class="active-page">Про нас</a>
         <a href="{% url 'contact' %}">Контакти</a>
       </nav>
     </header>
@@ -46,12 +54,12 @@
         <div class="about-images">
           <img
             src="../static/img/photo_2025-04-22_23-14-30.jpg"
-            alt="Обладнання"
+            alt="Обладнання для догляду за рослинами Ромашкіна"
             class="rounded-img"
           />
           <img
             src="../static/img/photo_2025-04-22_23-14-41.jpg"
-            alt="Засновники"
+            alt="Засновники сімейного бізнесу Ромашкіна"
             class="rounded-img"
           />
         </div>
@@ -64,7 +72,7 @@
       </p>
 
       <section class="cta">
-        <a href="{% url 'contact' %}" class="button">ОТРИМАТИ ОПТОВІ ЦІНИ</a>
+        <a href="{% url 'contact' %}" class="button" title="Запит оптових цін на саджанці">ОТРИМАТИ ОПТОВІ ЦІНИ</a>
       </section>
     </main>
   </body>

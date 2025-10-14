@@ -19,6 +19,18 @@ header {
   padding: 1vw 1vw 0vw 7vw;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* Важливо для доступності */
+}
+
 nav a {
   font-family: "Roboto", sans-serif;
   text-decoration: none;
