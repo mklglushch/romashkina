@@ -1,0 +1,205 @@
+/* ====== базовий reset ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: 30% auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ====== header ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe235;
+  padding: 1vw 5vw 0vw 7vw;
+}
+
+nav a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  color: #444141;
+  font-weight: 100;
+  font-size: 1.3vw;
+  margin-left: 1vw;
+}
+
+.logo img {
+  height: 5vw;
+}
+
+.active-page {
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1.4vw;
+}
+
+/* ------ кнопка-CTA ------ */
+.cta {
+  font-family: "Roboto", sans-serif;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  bottom: 3vh;
+}
+
+.button {
+  display: inline-block;
+  background: #000;
+  color: #ffeb3b;
+  border-radius: 1vw;
+  font-weight: 700;
+  font-family: "Comfortaa", cursive;
+  text-decoration: none;
+  font-size: 2vw;
+  padding: 1vw 1vw 1vw 1vw;
+}
+
+.about {
+  position: fixed;
+  left: 8vw;
+  bottom: 16vh;
+}
+
+.about-text-up {
+  text-align: left;
+}
+
+.about-text-up h1 {
+  font-family: "Comfortaa", cursive;
+  font-size: 5vw;
+}
+
+.about-text-up h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.9vw;
+  margin-left: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.between {
+  margin-top: 1vw;
+  margin-left: 6vw;
+}
+
+.first {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6vw;
+  max-width: 36vw;
+  line-height: 2.15vw;
+}
+
+.second {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.45vw !important;
+  max-width: 78vw;
+  margin-top: 1vw;
+  margin-left: 6vw;
+}
+
+.about-images {
+  display: inline-flex;
+  align-items: flex-start;
+  vertical-align: top;
+  margin: 0.5vw 1vw;
+  gap: 0.5vw;
+}
+
+.about-images img {
+  display: inline-block;
+  border-radius: 1vw;
+  object-fit: cover;
+  width: 18vw;
+  height: 14vw;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    display: none;
+  }
+
+  header {
+    margin-top: 2vh;
+  }
+
+  nav a {
+    margin-top: 10vh;
+    font-size: 3.5vw;
+    margin-left: 1vw;
+  }
+
+  .active-page {
+    font-size: 4vw;
+  }
+
+  .about {
+    top: 7vh;
+    left: 3vw;
+  }
+
+  .about-text-up h1 {
+    font-size: 5vh;
+    text-align: left;
+  }
+
+  .about-text-up h2 {
+    font-size: 2vh;
+    margin: 0;
+    color: #444141;
+    line-height: normal;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .between {
+    margin-left: 0;
+  }
+
+  .first {
+    color: #444141;
+    text-align: center;
+    max-width: 90vw;
+    font-size: 2vh;
+    line-height: normal;
+  }
+
+  .second {
+    display: none;
+  }
+
+  .cta {
+    bottom: 2vh;
+    width: 100vw;
+  }
+
+  .button {
+    border-radius: 10vw;
+    font-size: 6vw;
+    padding: 3vw 5vw;
+  }
+
+  .about-images img:nth-child(2) {
+    display: none;
+  }
+
+  .about-images {
+    margin-left: 12vw;
+  }
+
+  .about-images img{
+    width: 35vh;
+    height: 35vh;
+    margin-top: 5vw;
+  }
+}
+

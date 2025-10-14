@@ -1,4 +1,5 @@
+romashkina_app/__pycache__/
+romashkina_app/migrations/
+romashkina_site/__pycache__/
 venv/
-romashkina_site/romashkina_app/__pycache__/
-romashkina_site/romashkina_app/migrations/
-romashkina_site/romashkina_site/__pycache__/
+romashkina_site/__pycache__/
