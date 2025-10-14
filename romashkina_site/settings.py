@@ -21,10 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^fv%8-(4(!!=7t&+aqnc86lng!hl$^(b$v071oly$_6k+zu_g@'
-
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-^fv%8-(4(!!=7t&+aqnc86lng!hl$^(b$v071oly$_6k+zu_g@')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == '1' or os.environ.get('DEBUG') == 'True'
+if not DEBUG:
+    # У продакшн-режимі WhiteNoise буде працювати коректно
+    ALLOWED_HOSTS = ['*']
+else:
+    # У режимі розробки, дозволяємо всі хости
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '*']
 
 ALLOWED_HOSTS = ['*']  # Дозволяє всі домени
 
@@ -46,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -119,6 +125,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = 'static/'
 
@@ -132,6 +139,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATICFILES_DIRS = [
     BASE_DIR / "romashkina_app" / "static",
 ]
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+    
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    }
+}
 
 # settings.py
 

@@ -3,3 +3,8 @@ romashkina_app/migrations/
 romashkina_site/__pycache__/
 venv/
 romashkina_site/__pycache__/
+romashkina_app/media/
+/media/
+db.sqlite3
+static_collected
+.env
